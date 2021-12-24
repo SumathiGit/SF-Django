@@ -10,11 +10,11 @@ class WebTest(TestCase):
         """Test that mainly improves code coverage."""
 
         # Log in as a superuser
-        user = django.contrib.auth.models.User.objects.create_user('fredsu', 'fred@example.com', 'passwd')
+        user = django.contrib.auth.models.User.objects.create_user('admin', 'sumathi0251@gmail.com', 'sumathi')
         user.is_superuser = True
         user.is_staff = True
         user.save()
-        self.client.login(username='fredsu', password='passwd')
+        self.client.login(username='admin', password='sumathi')
 
         account = Account(Name='sf_test account')
         account.save()

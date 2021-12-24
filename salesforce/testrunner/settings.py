@@ -5,7 +5,7 @@ import os
 DEBUG = True
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Sumathi', 'sumathi0251@gmail.com'),
 )
 
 SF_EXAMPLE_PERSON_ACCOUNT_ACTIVATED = False
@@ -19,10 +19,10 @@ DATABASES = {
     # in order to protect private secret values from unintentional committing.
     'salesforce': {
         'ENGINE': 'salesforce.backend',
-        "CONSUMER_KEY": os.environ.get('SF_CONSUMER_KEY', ''),
-        "CONSUMER_SECRET": os.environ.get('SF_CONSUMER_SECRET', ''),
-        'USER': os.environ.get('SF_USER', ''),
-        'PASSWORD': os.environ.get('SF_PASSWORD', ''),
+        "CONSUMER_KEY": os.environ.get('SF_CONSUMER_KEY', '3MVG9pRzvMkjMb6n5XjYC67GsenaDrJ6PWPNbvBBMWl_A1VlHTRuhvsPSItd5PT587oucheOMjrfmigNCH3Wl'),
+        "CONSUMER_SECRET": os.environ.get('SF_CONSUMER_SECRET', '221A3CE85A96AB022A8ECE01442357BF49794F3EE869BA1279494E8D693F7562'),
+        'USER': os.environ.get('SF_USER', 'sumathi@sabbatech.com'),
+        'PASSWORD': os.environ.get('SF_PASSWORD', 'Dhanya@1234WpQdoaC54yfSsQPWpuahQLax'),
         'HOST': os.environ.get('SF_HOST', 'https://login.salesforce.com'),
         'TEST': {
             'DEPENDENCIES': [],
@@ -186,6 +186,18 @@ LOGGING = {
     }
 }
 
+
+AUTHENTICATION_BACKENDS = (
+    ('django.contrib.auth.backends.ModelBackend'),
+)
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
 # Name of primary key - by default 'id'. The value 'Id' was the default for
 # version "django-salesforce < 0.5".
 # The value SF_PK can not be changed after any migration for Salesforce has been created

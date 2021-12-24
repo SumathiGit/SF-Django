@@ -446,3 +446,9 @@ class CampaignMember(SalesforceModel):
 # this model will be removed to test removing in migrations
 class DeletedObject(SalesforceModel):
     pass
+
+
+class CreateInvoice(SalesforceModel):
+    Name = models.CharField(max_length=255)
+    amount = models.DecimalField(max_digits=18, decimal_places=2, blank=True, null=True)
+    Email = models.CharField(max_length=100)

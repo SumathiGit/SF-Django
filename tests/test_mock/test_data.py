@@ -8,7 +8,7 @@ from tests.test_mock.mocksf import mock  # NOQA pylint:disable=unused-import
 
 
 class MockTest(MockTestCase):
-    api_version = '20.0'
+    api_version = '50.0'
 
     def setUp(self) -> None:
         super(MockTest, self).setUp()
@@ -23,14 +23,14 @@ class MockTest(MockTestCase):
                 "GET mock:///services/data/",
                 resp="""[
                     {
-                        "version":"20.0",
-                        "url":"/services/data/v20.0",
+                        "version":"50.0",
+                        "url":"/services/data/v50.0",
                         "label":"Winter '11"
                     }
                     ...
                 ]""",))
         ret = self.cursor.cursor.versions_request()
-        self.assertEqual(ret, [{'version': '20.0', 'url': '/services/data/v20.0', 'label': "Winter '11"}])
+        self.assertEqual(ret, [{'version': '50.0', 'url': '/services/data/v50.0', 'label': "Winter '11"}])
 
     # ---------------------
 
@@ -38,16 +38,16 @@ class MockTest(MockTestCase):
         "Get a List of Resources"
         self.mock_add_expected(
             MockJsonRequest(
-                "GET mock:///services/data/v20.0/",
+                "GET mock:///services/data/v50.0/",
                 resp="""{
-                    "sobjects" : "/services/data/v20.0/sobjects",
-                    "search" : "/services/data/v20.0/search",
-                    "query" : "/services/data/v20.0/query",
-                    "recent" : "/services/data/v20.0/recent"
+                    "sobjects" : "/services/data/v50.0/sobjects",
+                    "search" : "/services/data/v50.0/search",
+                    "query" : "/services/data/v50.0/query",
+                    "recent" : "/services/data/v50.0/recent"
                     ...
                 }""",))
         ret = self.cursor.cursor.urls_request()
-        self.assertEqual(ret['sobjects'], '/services/data/v20.0/sobjects')
+        self.assertEqual(ret['sobjects'], '/services/data/v50.0/sobjects')
 
     # ---------------------
 
@@ -55,7 +55,7 @@ class MockTest(MockTestCase):
         "..."
         self.mock_add_expected(
             MockJsonRequest(
-                "GET mock:///services/data/v20.0/",
+                "GET mock:///services/data/v50.0/",
                 resp="""
                 {
                     ...

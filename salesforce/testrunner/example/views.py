@@ -16,6 +16,7 @@ log = logging.getLogger(__name__)
 
 def list_accounts(request):
     accounts = models.Account.objects.all()[0:5]
+    print(models.Account.objects.all())
 
     return shortcuts.render(request, 'list-accounts.html',
                             dict(title="List First 5 Accounts", accounts=accounts)
@@ -32,5 +33,5 @@ def search_accounts(request):
         form = forms.SearchForm()
 
     return shortcuts.render(request, 'search-accounts.html',
-                            dict(title="Search Accounts by Email", accounts=accounts, form=form)
+                            dict(title="Search Accounts by Name", accounts=accounts, form=form)
                             )
