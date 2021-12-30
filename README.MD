@@ -20,4 +20,4 @@ Install, configure a Salesforce connection, create a Salesforce model and run.
         'HOST': 'https://test.salesforce.com',
     }
 
- 
+ 3.python3 manage.py runserver
