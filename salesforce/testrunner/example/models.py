@@ -297,12 +297,15 @@ class Note(SalesforceModel):
 
 
 class Opportunity(SalesforceModel):
+    TYPES = ['Posted', 'Prospecting', 'Pledged', 'Withdrawn', 'Closed Lost']
     name = models.CharField(max_length=255)
+    Account = models.ForeignKey(Account, on_delete=DO_NOTHING)
     contacts = django.db.models.ManyToManyField(
         Contact, through='example.OpportunityContactRole', related_name='opportunities'
     )
     close_date = models.DateField()
-    stage = models.CharField(max_length=255, db_column='StageName')  # e.g. "Prospecting"
+    stage = models.CharField(max_length=255, db_column='StageName', choices=[(x, x) for x in TYPES],
+                            null=True)  # e.g. "Prospecting"
     created_date = models.DateTimeField(sf_read_only=models.READ_ONLY, auto_now_add=True)
     amount = models.DecimalField(max_digits=18, decimal_places=2, blank=True, null=True)
     probability = models.DecimalField(
